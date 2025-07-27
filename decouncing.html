@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="search" placeholder="Type something...">
+    <script>
+        function deboune(func, delay){
+            let timeoutId;
+            return function(...args){
+                clearTimeout(timeoutId)
+                timeoutId = setTimeout( ()=> {
+                    func.apply(this, args)
+                }, delay)
+            }
+        }
+
+        const search = (e) => {
+            console.log("api call for search:" , e.target.value);
+            
+        }
+
+        const debouncedSearch = deboune(search , 500)
+
+        document.getElementById("search").addEventListener("input", debouncedSearch)
+    </script>
+</body>
+</html>
