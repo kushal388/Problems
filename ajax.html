@@ -1,0 +1,22 @@
+<!-- ajax.html -->
+<!DOCTYPE html>
+<html>
+<body>
+
+    <button onclick="showdata()">SHOW DATA</button>
+    <script>
+        function showdata(){
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://fakestoreapi.com/products", true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log(JSON.parse(xhr.responseText));
+            }
+        };
+        xhr.send();
+    }
+    
+    </script>
+</body>
+</html>
