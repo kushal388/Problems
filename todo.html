@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* button {
+            all: unset;
+            } */
+
+        ul {
+            list-style-type: none;
+            padding: 10px; /* Optional: removes indentation */
+        }
+
+        .center-div {
+            width: 300px;
+            margin: 0 auto;
+            }
+
+        li   {
+            display: flex;
+            align-items: center;
+            /* justify-content: space-between; */
+            padding: 8px 0; /* Adds space between list items */
+            /* gap: 10px; */
+            }
+
+        li button {
+            margin-left: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            all:unset
+            }
+
+      
+
+    </style>
+
+</head>
+<body>
+
+    <div class="center-div">
+
+            <h3>TO DO LIST</h3>
+
+            <input type="text" id="todo" placeholder="enter you task">
+            <button onclick="addTodo()">ADD</button>
+
+            <ul id="todo_list_item">
+
+            </ul>
+    
+    </div>
+
+
+    <script>
+        function addTodo(){
+
+            let todoItem = document.getElementById("todo").value 
+
+            let li = document.createElement("li")
+            li.textContent = todoItem
+
+            let editBtn = document.createElement("button")
+            editBtn.textContent = "✏️"
+
+            editBtn.onclick = function(){
+                let newTask = prompt("edit the task :", li.firstChild.textContent)
+                li.firstChild.textContent = newTask
+            }
+
+            let removeBtn = document.createElement("button")
+            removeBtn.textContent = "❌"
+
+            removeBtn.onclick= function(){
+                li.remove()
+            }
+
+            li.appendChild(editBtn)
+            li.appendChild(removeBtn)
+
+            document.getElementById("todo_list_item").appendChild(li)
+
+            
+            document.getElementById("todo").value=""
+      
+        }
+    </script>
+</body>
+</html>

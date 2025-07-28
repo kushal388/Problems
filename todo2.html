@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+
+  <style>
+    ul {
+      list-style-type: none;
+      padding: 10px;
+    }
+
+    .center-div {
+      width: 300px;
+      margin: 0 auto;
+      text-align: center; 
+    }
+
+    input, button {
+      margin: 5px;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .task-text-div {
+      flex: 1;
+      text-align: left;
+      word-break: break-word;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    li button {
+      font-size: 16px;
+      cursor: pointer;
+      all: unset;
+    }
+
+    li button:hover {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-div">
+    <h3>TO DO LIST</h3>
+    <input type="text" id="todo" placeholder="Enter your task" />
+    <button onclick="addTodo()">ADD</button>
+
+    <ul id="todo_list_item"></ul>
+  </div>
+
+  <script>
+    function addTodo() {
+      const todoItem = document.getElementById("todo").value.trim();
+      if (!todoItem) return;
+
+      const li = document.createElement("li");
+
+      
+      const taskDiv = document.createElement("div");
+      taskDiv.className = "task-text-div";
+      taskDiv.textContent = todoItem;
+
+    
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "✏️";
+      editBtn.onclick = function () {
+        const newTask = prompt("Edit the task:", taskDiv.textContent);
+        if (newTask !== null) {
+          taskDiv.textContent = newTask.trim();
+        }
+      };
+
+    
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "❌";
+      removeBtn.onclick = function () {
+        li.remove();
+      };
+
+      const btnGroup = document.createElement("div");
+      btnGroup.className = "btn-group";
+      btnGroup.appendChild(editBtn);
+      btnGroup.appendChild(removeBtn);
+
+
+      li.appendChild(taskDiv);
+      li.appendChild(btnGroup);
+
+      document.getElementById("todo_list_item").appendChild(li);
+      document.getElementById("todo").value = "";
+    }
+  </script>
+</body>
+</html>

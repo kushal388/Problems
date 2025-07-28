@@ -1,5 +1,7 @@
 // 1) Find the Max and Min num  in an Array
 
+const { json } = require("express");
+
 /*
     let arr =[10,20,25,35,56,76,97,32]
 
@@ -475,6 +477,32 @@ function fibonacci(n){
 fibonacci(5)
 */
 
+// 14) shallow copy deep copy
+/*
+const original = {
+  name: "kushal",
+  address: {
+    city: "Bengaluru"
+  }
+};
+
+
+// const shallowCopy = {...original}
+// shallowCopy.name = "JOHN"
+// shallowCopy.address.city = "New york"
+// console.log("shallow copy: ",shallowCopy);
+// console.log("original :" ,original);
+
+
+console.log("---------------------");
+
+const deepCopy = JSON.parse(JSON.stringify(original))
+deepCopy.name = "JOHN"
+deepCopy.address.city = "New york"
+console.log("shallow copy: ",deepCopy);
+console.log("original :" ,original);
+
+*/
 
 
 // 15)	write a function to find how many times an elements are repeated in an array [1,2,3,3,5,2,1,7,6,8,7,8] and in string "abcdaabdlfjl'
